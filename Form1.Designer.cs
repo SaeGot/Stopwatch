@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.lvTimeline = new System.Windows.Forms.ListView();
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
@@ -36,6 +37,7 @@
             this.btnSplit = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnHotKey = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // txtTitle
@@ -82,8 +84,9 @@
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 4;
-            this.btnStart.Text = "button1";
+            this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.BtnStartClick);
             // 
             // btnSplit
             // 
@@ -111,6 +114,11 @@
             this.btnHotKey.TabIndex = 7;
             this.btnHotKey.Text = "button4";
             this.btnHotKey.UseVisualStyleBackColor = true;
+            // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Tick += new System.EventHandler(this.TimerTick);
             // 
             // Form1
             // 
@@ -142,6 +150,7 @@
         private System.Windows.Forms.Button btnSplit;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnHotKey;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
