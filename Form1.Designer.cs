@@ -38,6 +38,8 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnHotKey = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.stage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timeline = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // txtTitle
@@ -51,12 +53,17 @@
             // 
             // lvTimeline
             // 
+            this.lvTimeline.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.stage,
+            this.timeline});
+            this.lvTimeline.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvTimeline.HideSelection = false;
             this.lvTimeline.Location = new System.Drawing.Point(233, 96);
             this.lvTimeline.Name = "lvTimeline";
             this.lvTimeline.Size = new System.Drawing.Size(318, 97);
             this.lvTimeline.TabIndex = 1;
             this.lvTimeline.UseCompatibleStateImageBehavior = false;
+            this.lvTimeline.View = System.Windows.Forms.View.Details;
             // 
             // txtCurrentTime
             // 
@@ -90,12 +97,14 @@
             // 
             // btnSplit
             // 
+            this.btnSplit.Enabled = false;
             this.btnSplit.Location = new System.Drawing.Point(314, 262);
             this.btnSplit.Name = "btnSplit";
             this.btnSplit.Size = new System.Drawing.Size(75, 23);
             this.btnSplit.TabIndex = 5;
-            this.btnSplit.Text = "button2";
+            this.btnSplit.Text = "Split";
             this.btnSplit.UseVisualStyleBackColor = true;
+            this.btnSplit.Click += new System.EventHandler(this.BtnSplitClick);
             // 
             // btnReset
             // 
@@ -103,8 +112,9 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 6;
-            this.btnReset.Text = "button3";
+            this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.BtnResetClick);
             // 
             // btnHotKey
             // 
@@ -119,6 +129,16 @@
             // 
             this.timer.Enabled = true;
             this.timer.Tick += new System.EventHandler(this.TimerTick);
+            // 
+            // stage
+            // 
+            this.stage.Text = "구간";
+            this.stage.Width = 150;
+            // 
+            // timeline
+            // 
+            this.timeline.Text = "달성 시간";
+            this.timeline.Width = 150;
             // 
             // Form1
             // 
@@ -151,6 +171,8 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnHotKey;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ColumnHeader stage;
+        private System.Windows.Forms.ColumnHeader timeline;
     }
 }
 
