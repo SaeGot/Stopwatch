@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.lvTimeline = new System.Windows.Forms.ListView();
+            this.stage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timeline = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.txtCurrentGap = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
@@ -38,8 +40,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnHotKey = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.stage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.timeline = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stageGap = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // txtTitle
@@ -55,7 +56,8 @@
             // 
             this.lvTimeline.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.stage,
-            this.timeline});
+            this.timeline,
+            this.stageGap});
             this.lvTimeline.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvTimeline.HideSelection = false;
             this.lvTimeline.Location = new System.Drawing.Point(233, 96);
@@ -64,6 +66,16 @@
             this.lvTimeline.TabIndex = 1;
             this.lvTimeline.UseCompatibleStateImageBehavior = false;
             this.lvTimeline.View = System.Windows.Forms.View.Details;
+            // 
+            // stage
+            // 
+            this.stage.Text = "구간";
+            this.stage.Width = 50;
+            // 
+            // timeline
+            // 
+            this.timeline.Text = "달성 시간";
+            this.timeline.Width = 150;
             // 
             // txtCurrentTime
             // 
@@ -130,15 +142,10 @@
             this.timer.Enabled = true;
             this.timer.Tick += new System.EventHandler(this.TimerTick);
             // 
-            // stage
+            // stageGap
             // 
-            this.stage.Text = "구간";
-            this.stage.Width = 150;
-            // 
-            // timeline
-            // 
-            this.timeline.Text = "달성 시간";
-            this.timeline.Width = 150;
+            this.stageGap.Text = "구간 차";
+            this.stageGap.Width = 150;
             // 
             // Form1
             // 
@@ -173,6 +180,7 @@
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ColumnHeader stage;
         private System.Windows.Forms.ColumnHeader timeline;
+        private System.Windows.Forms.ColumnHeader stageGap;
     }
 }
 

@@ -17,6 +17,7 @@ namespace Stopwatch
         private Diag.Stopwatch stopwatch = new Diag.Stopwatch();
         private bool start = false;
         private int listViewCount = 0;
+        private TimeSpan beforeTime = new TimeSpan(0);
 
         public Form1()
         {
@@ -31,6 +32,7 @@ namespace Stopwatch
             start = false;
             btnSplit.Enabled = false;
             listViewCount = 0;
+            beforeTime = new TimeSpan(0);
         }
 
         private void BtnStartClick(object sender, EventArgs e)
@@ -55,6 +57,7 @@ namespace Stopwatch
         {
             TimeSpan time_span = stopwatch.Elapsed;
             txtCurrentTime.Text = time_span.ToString(@"hh\:mm\:ss\.ff");
+            txtCurrentGap.Text = (time_span - beforeTime).ToString(@"hh\:mm\:ss\.ff");
         }
 
         private void BtnSplitClick(object sender, EventArgs e)
@@ -63,7 +66,11 @@ namespace Stopwatch
             ListViewItem item = new ListViewItem(listViewCount.ToString());
             TimeSpan time_span = stopwatch.Elapsed;
             item.SubItems.Add(time_span.ToString(@"hh\:mm\:ss\.ff"));
+            TimeSpan gap = time_span - beforeTime;
+            item.SubItems.Add(gap.ToString(@"hh\:mm\:ss\.ff"));
             lvTimeline.Items.Add(item);
+            lvTimeline.EnsureVisible(listViewCount - 1);
+            beforeTime = time_span;
         }
 
         private void BtnResetClick(object sender, EventArgs e)
