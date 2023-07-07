@@ -18,6 +18,9 @@ namespace Stopwatch
         private bool start = false;
         private int listViewCount = 0;
         private TimeSpan beforeTime = new TimeSpan(0);
+        private string startKey;
+        private string splitKey;
+        private string resetKey;
 
         public Form1()
         {
@@ -76,6 +79,34 @@ namespace Stopwatch
         private void BtnResetClick(object sender, EventArgs e)
         {
             Initialize();
+        }
+
+        private void BtnHotKeyClick(object sender, EventArgs e)
+        {
+            List<string> keys = new List<string>() { startKey, splitKey, resetKey };
+            HotKey hotkey_form = new HotKey(keys);
+            hotkey_form.Owner = this;
+            if (hotkey_form.ShowDialog() == DialogResult.OK)
+            {
+                startKey = hotkey_form.txtStart.Text;
+                splitKey = hotkey_form.txtSplit.Text;
+                resetKey = hotkey_form.txtReset.Text;
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData.ToString() == startKey)
+                BtnStartClick(keyData, null);
+            else if (keyData.ToString() == splitKey)
+            {
+                if (btnSplit.Enabled)
+                    BtnSplitClick(keyData, null);
+            }
+            else if (keyData.ToString() == resetKey)
+                BtnResetClick(keyData, null);
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

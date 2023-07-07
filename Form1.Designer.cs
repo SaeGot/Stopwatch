@@ -33,6 +33,7 @@
             this.lvTimeline = new System.Windows.Forms.ListView();
             this.stage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timeline = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stageGap = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtCurrentTime = new System.Windows.Forms.TextBox();
             this.txtCurrentGap = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnHotKey = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.stageGap = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // txtTitle
@@ -76,6 +76,11 @@
             // 
             this.timeline.Text = "달성 시간";
             this.timeline.Width = 150;
+            // 
+            // stageGap
+            // 
+            this.stageGap.Text = "구간 차";
+            this.stageGap.Width = 150;
             // 
             // txtCurrentTime
             // 
@@ -134,18 +139,14 @@
             this.btnHotKey.Name = "btnHotKey";
             this.btnHotKey.Size = new System.Drawing.Size(75, 23);
             this.btnHotKey.TabIndex = 7;
-            this.btnHotKey.Text = "button4";
+            this.btnHotKey.Text = "HotKey";
             this.btnHotKey.UseVisualStyleBackColor = true;
+            this.btnHotKey.Click += new System.EventHandler(this.BtnHotKeyClick);
             // 
             // timer
             // 
             this.timer.Enabled = true;
             this.timer.Tick += new System.EventHandler(this.TimerTick);
-            // 
-            // stageGap
-            // 
-            this.stageGap.Text = "구간 차";
-            this.stageGap.Width = 150;
             // 
             // Form1
             // 
